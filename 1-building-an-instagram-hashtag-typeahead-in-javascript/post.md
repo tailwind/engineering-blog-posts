@@ -1,5 +1,5 @@
 
-# Building a JavaScript Hashtag Typeahead
+# Building an Instagram Hashtag Typeahead in JavaScript
 
 At Tailwind, one of our core features is to give users suggestions about hashtags to use when crafting a post, so that our users can maximize the reach of their Instagram posts.
 
