@@ -73,133 +73,133 @@ The getActiveHashtag function will either return the hashtag the user is editing
 With these arguments in mind and this desired output (either a string that is the hashtag, or null), let’s build some pseudocode test cases that we can use to determine whether or not a user is editing the post caption! You should be able to do this with any common testing suite. At Tailwind, we like to do Test-Driven Development, using [tape](https://www.npmjs.com/package/tape), to reduce bugs and ensure that we’ve planned our implementation correctly before we write the actual code.
 
 **Case 1 — User is creating or editing a hashtag:**
+```js
+test('The user is adding a hashtag', t => {
+    // Arrange
+    const content = 'Hello #worl';
+    const key = 'l';
+    const caretIndex = 11; // End of line
 
-    test('The user is adding a hashtag', t => {
-        // Arrange
-        const content = 'Hello #worl';
-        const key = 'l';
-        const caretIndex = 11; // End of line
+    // Act
+    const r = getActiveHashtag(content, key, caretIndex);
 
-        // Act
-        const r = getActiveHashtag(content, key, caretIndex);
-
-        // Assert
-        t.assert(r, `**#worl**`);
-    });
-
+    // Assert
+    t.assert(r, `**#worl**`);
+});
+```
 **Case 2 — User’s caret is inside of a hashtag but the user is not editing it:**
+```js
+test('The user arrowed into a hashtag, but hasn't edited it', t => {
+    // Arrange
+    const content = 'Hello #world';
+    const key = 'ArrowLeft';
+    const caretIndex = 11; // Between the `l` and the `d`
 
-    test('The user arrowed into a hashtag, but hasn't edited it', t => {
-        // Arrange
-        const content = 'Hello #world';
-        const key = 'ArrowLeft';
-        const caretIndex = 11; // Between the `l` and the `d`
+    // Act
+    const r = getActiveHashtag(content, key, caretIndex);
 
-        // Act
-        const r = getActiveHashtag(content, key, caretIndex);
-
-        // Assert
-        t.assert(r, **null**);
-    });
-
+    // Assert
+    t.assert(r, **null**);
+});
+```
 **Case 3— User’s caret is not focused on a hashtag:**
+```js
+test('The user is editing something that isn't a hashtag', t => {
+    // Arrange
+    const content = '#Hello worl';
+    const key = 'l';
+    const caretIndex = 11; // End of line
 
-    test('The user is editing something that isn't a hashtag', t => {
-        // Arrange
-        const content = '#Hello worl';
-        const key = 'l';
-        const caretIndex = 11; // End of line
+    // Act
+    const r = getActiveHashtag(content, key, caretIndex);
 
-        // Act
-        const r = getActiveHashtag(content, key, caretIndex);
-
-        // Assert
-        t.assert(r, **null**);
-    });
-
+    // Assert
+    t.assert(r, **null**);
+});
+```
 Now that we know what results getActiveHashtag should return, let’s look at the implementation:
+```js
+// Keys that never used in the process of
+// editing a hashtag.
+const nonEditingKeys = [
+   'ArrowLeft',
+   'ArrowRight',
+   'Control',
+   'Shift',
+   // ...etc
+];
 
-    // Keys that never used in the process of
-    // editing a hashtag.
-    const nonEditingKeys = [
-       'ArrowLeft',
-       'ArrowRight',
-       'Control',
-       'Shift',
-       // ...etc
-    ];
-
-    // Returns the actively-being-edited hashtag, or null
-    // if none is found.  
-    const getActiveHashtag = (content, key, caretIndex) => {
-        // If the user pressed a key that isn't a character, they
-        // are not actively editing a hashtag:
-        if (nonEditingKeys.includes(key)) {
-            return null;
-        }
-
-        // Figure out what word or hashtag the user is editing
-        // using the caret position and the content:
-        const activeWordOrHashtag = extractActiveWordOrHashtag(content, caretIndex);
-
-        // if the word that the user is editing is a hashtag, return it.
-        // otherwise, return null.
-        return activeWordOrHashtag[0] === '#' ? activeWordOrHashtag : null;
-    };
-
-You’ll notice that we have a supporting function, extractActiveWordOrHashtag, that is responsible for getting the word or hashtag that the user is editing from the post caption. Here’s how it looks:
-
-    // Regex pattern that matches to a word or a hashtag.
-    // Test it out here: [https://regex101.com/r/0Bl07o/2](https://regex101.com/r/0Bl07o/2)
-    const hashtagOrWordRegex = /#*\w.*/g;
-
-    // Gets the word that the user's caret is positioned on.
-    const extractActiveWordOrHashtag (content, caretIndex) => {
-        // First, backtrack until we find a character that can't
-        // be part of a word or hashtag.
-        let index = caretIndex;
-        let character = content[index];
-        do {
-          let matches = char.match(hashtagOrWordRegex);
-          // if this character is not part of a hashtag (e.g.
-          // it's a space or a period), return the word or
-          // hashtag in front of it.
-          if (!matches || !matches.length) {
-            return content
-               .slice(index + 1, content.length)
-               .match(hashtagOrWordRegex)[0];
-          }
-        // Otherwise, go to the previous character
-        index -= 1
-        } while (index > 0)
+// Returns the actively-being-edited hashtag, or null
+// if none is found.  
+const getActiveHashtag = (content, key, caretIndex) => {
+    // If the user pressed a key that isn't a character, they
+    // are not actively editing a hashtag:
+    if (nonEditingKeys.includes(key)) {
+        return null;
     }
 
+    // Figure out what word or hashtag the user is editing
+    // using the caret position and the content:
+    const activeWordOrHashtag = extractActiveWordOrHashtag(content, caretIndex);
+
+    // if the word that the user is editing is a hashtag, return it.
+    // otherwise, return null.
+    return activeWordOrHashtag[0] === '#' ? activeWordOrHashtag : null;
+};
+```
+You’ll notice that we have a supporting function, extractActiveWordOrHashtag, that is responsible for getting the word or hashtag that the user is editing from the post caption. Here’s how it looks:
+```js
+// Regex pattern that matches to a word or a hashtag.
+// Test it out here: [https://regex101.com/r/0Bl07o/2](https://regex101.com/r/0Bl07o/2)
+const hashtagOrWordRegex = /#*\w.*/g;
+
+// Gets the word that the user's caret is positioned on.
+const extractActiveWordOrHashtag (content, caretIndex) => {
+    // First, backtrack until we find a character that can't
+    // be part of a word or hashtag.
+    let index = caretIndex;
+    let character = content[index];
+    do {
+      let matches = char.match(hashtagOrWordRegex);
+      // if this character is not part of a hashtag (e.g.
+      // it's a space or a period), return the word or
+      // hashtag in front of it.
+      if (!matches || !matches.length) {
+        return content
+           .slice(index + 1, content.length)
+           .match(hashtagOrWordRegex)[0];
+      }
+    // Otherwise, go to the previous character
+    index -= 1
+    } while (index > 0)
+}
+```
 ## Rendering the Typeahead using React
 
 Thanks to our keydown handler andgetActiveHashtag, the logic for whether or not to render the typeahead is in place. In our keydown handler, we state activeHashtag in React state, using the result of getActiveHashtag . If this result isn’t null, we know that we need to render the typeahead. We can pass activeHashtag as a prop to our HashtagTypeahead component and use it it in the render method like so:
+```js
+class HashtagTypeahead extends class {
 
-    class HashtagTypeahead extends class {
+    ...
 
-        ...
-
-        render () {
-            // If the user is editing a hashtag,
-            // render the typeahead to give the
-            // user suggestions for hashtags to use
-            if (this.props.activeHashtag) {
-                return (
-                    <HashtagTypeaheadMenu
-                        activeHashtag={this.props.activeHashtag}
-                        hashtagOptions={...}
-                        onSelect={...)
-                    />
-                )
-            }
-            // Otherwise, return nothing
-            return null;
+    render () {
+        // If the user is editing a hashtag,
+        // render the typeahead to give the
+        // user suggestions for hashtags to use
+        if (this.props.activeHashtag) {
+            return (
+                <HashtagTypeaheadMenu
+                    activeHashtag={this.props.activeHashtag}
+                    hashtagOptions={...}
+                    onSelect={...)
+                />
+            )
         }
+        // Otherwise, return nothing
+        return null;
     }
-
+}
+```
 I abstracted away some of the React implementation details, because how you do this part depends on what typeahead library you want to use. At Tailwind, we use React extensively and have some component that do typeaheads for us already. If you’re looking for a good off-the-shelf typeahead components, check out [React Bootstrap Typeahead](https://www.npmjs.com/package/react-bootstrap-typeahead) or [React Autosuggest](https://react-autosuggest.js.org/). These might spare you the time and energy of building your own typeahead.
 
 This is my first project since starting at [Tailwind](undefined) and I had a ton of fun working on it. If you’re interested in solving interesting frontend and backend problems, [we’re hiring](https://www.tailwindapp.com/careers)!
