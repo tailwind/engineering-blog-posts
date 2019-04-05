@@ -48,18 +48,18 @@ In order to determine whether the typeahead should be shown, we need to get the 
 1. A function getActiveHashtag with the following arguments:
 
 The event handler is pretty straightforward. It will call the getActiveHashtag method and set state with the resulting hashtag it finds:
-
-    // Event handler for when the user presses 
-    // a key inside of the post editor
-    onKeyPress = event => {
-        const content = event.target.value;
-        const key = event.key;
-        const caretIndex = event.target.selectionStart;
-        this.setState({
-            activeHashtag: getActiveHashtag(content, key, caretIndex)
-        });
-    }
-
+```js
+// Event handler for when the user presses 
+// a key inside of the post editor
+onKeyPress = event => {
+    const content = event.target.value;
+    const key = event.key;
+    const caretIndex = event.target.selectionStart;
+    this.setState({
+        activeHashtag: getActiveHashtag(content, key, caretIndex)
+    });
+}
+```
 We named our parser function getActiveHashtag and we wrote it to accept the following arguments:
 
 content — The content of the post caption that the user is editing. E.g. Hello #world!
