@@ -54,7 +54,7 @@ In order to determine whether the typeahead should be shown, we need to get the 
 
 The `getActiveHashtag` function will either return the hashtag the user is editing (e.g. `#worl`), or `null` if no hashtag is actively being edited by the user.
 
-With these arguments in mind and this desired output (either a string that is the hashtag, or `null`), let’s build some pseudocode test cases that we can use to determine whether or not a user is editing the post caption! You should be able to do this with any common testing suite. At Tailwind, we like to do Test-Driven Development, using [tape](https://www.npmjs.com/package/tape), to reduce bugs and ensure that we’ve planned our implementation correctly before we write the actual code.
+With these arguments in mind and this desired output (either a string that is the hashtag, or `null`), let’s build some pseudocode test cases that we can use to determine whether or not a user is editing the post caption! You should be able to do this with any common testing suite. At Tailwind, we do Test-Driven Development, using [tape](https://www.npmjs.com/package/tape), to reduce bugs and ensure that we’ve planned our implementation correctly before we write the actual code.
 
 The event handler is pretty straightforward. It will call the `getActiveHashtag` method and return the resulting hashtag that it finds:
 ```js
