@@ -74,7 +74,7 @@ With these arguments in mind and this desired output (either a string that is th
 
 **Case 1 — User is creating or editing a hashtag:**
 ```js
-test('The user is adding a hashtag', t => {
+test(t => {
     // Arrange
     const content = 'Hello #worl';
     const key = 'l';
@@ -84,12 +84,12 @@ test('The user is adding a hashtag', t => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    t.assert(r, `**#worl**`);
+    test.assert(r, `**#worl**`);
 });
 ```
 **Case 2 — User’s caret is inside of a hashtag but the user is not editing it:**
 ```js
-test('The user arrowed into a hashtag, but hasn't edited it', t => {
+test(test => {
     // Arrange
     const content = 'Hello #world';
     const key = 'ArrowLeft';
@@ -99,12 +99,12 @@ test('The user arrowed into a hashtag, but hasn't edited it', t => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    t.assert(r, **null**);
+    test.assert(r, **null**);
 });
 ```
 **Case 3— User’s caret is not focused on a hashtag:**
 ```js
-test('The user is editing something that isn't a hashtag', t => {
+test(test => {
     // Arrange
     const content = '#Hello worl';
     const key = 'l';
@@ -114,7 +114,7 @@ test('The user is editing something that isn't a hashtag', t => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    t.assert(r, **null**);
+    test.assert(r, **null**);
 });
 ```
 Now that we know what results getActiveHashtag should return, let’s look at the implementation:
