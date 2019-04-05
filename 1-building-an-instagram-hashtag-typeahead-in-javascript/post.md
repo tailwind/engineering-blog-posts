@@ -45,7 +45,7 @@ In order to determine whether the typeahead should be shown, we need to get the 
 
 1. A `keydown` event handler that will fire every time the user presses a key (or a key combination such as `shift + a`)
 
-2. A function called `getActiveHashtag` that takes the following arguments:
+1. A function called `getActiveHashtag` that takes the following arguments:
 `content` — The content of the post caption that the user is editing. E.g. `Hello #world!`
 
 `key` — The key that the user pressed to trigger this keydown event. We retrieve this from the event object. E.g. if the user presses thea key, then event.key would be a. There’s more information available as part of the event object that can determine whether a key combination was pressed (such as `shift + A`), but in our case, `event.key` is all we care about.
@@ -81,7 +81,7 @@ const test => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    test.assert(r, `**#worl**`);
+    test.assert(r, `#worl`);
 };
 ```
 **Case 2 — User’s caret is inside of a hashtag but the user is not editing it:**
@@ -96,7 +96,7 @@ const test => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    test.assert(r, **null**);
+    test.assert(r, null);
 };
 ```
 **Case 3 — User’s caret is not focused on a hashtag:**
@@ -111,7 +111,7 @@ const test => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    test.assert(r, **null**);
+    test.assert(r, null);
 };
 ```
 Now that we know what results `getActiveHashtag` should return, let’s look at the implementation:
