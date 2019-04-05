@@ -5,7 +5,9 @@ At Tailwind, one of our core features is to give users suggestions about hashtag
 
 One way that we accomplish this is by providing the list of suggested hashtags that the user can select while writing a post caption — You can see this in the image below.
 
-![The different colors for the suggested hashtags help the user identify the relevance of each suggested tag.](https://cdn-images-1.medium.com/max/2000/1*5TqWDibZjdIXgedY7KGg-Q.png)*The different colors for the suggested hashtags help the user identify the relevance of each suggested tag.*
+![The different colors for the suggested hashtags help the user identify the relevance of each suggested tag.](https://cdn-images-1.medium.com/max/2000/1*5TqWDibZjdIXgedY7KGg-Q.png)
+
+*The different colors for the suggested hashtags help the user identify the relevance of each suggested tag.*
 
 One major UX improvement that our design and engineering team collaborated on was to be able to make suggestions as soon as the user starts to type a hashtag. If I start typing #foo in the post above, for example, we’d like a list to come up that shows hashtag suggestions including things like #football and #footballgames.
 
@@ -15,7 +17,9 @@ Enabling a typeahead for users will make creating a post easier and faster when 
 
 As the user types, we‘d like to suggest hashtags that begin with the letters the user has entered so far. The suggestions should be brought up in context, right below the text that the user is typing so that the user can quickly select one and continue editing the post caption. We also want to provide reach metrics so that the user can choose the best possible tag. Here’s how it will all look when put together:
 
-![*See it in action at [tailwindapp.com](http://tailwindapp.com)*](https://cdn-images-1.medium.com/max/2000/1*V360JEpJEgSQOJEMVI6DAA.png)**See it in action at [tailwindapp.com](http://tailwindapp.com)**
+![*See it in action at [tailwindapp.com](http://tailwindapp.com)*](https://cdn-images-1.medium.com/max/2000/1*V360JEpJEgSQOJEMVI6DAA.png)
+
+*See it in action at [tailwindapp.com](http://tailwindapp.com)*
 
 Sounds pretty straightforward, right? Turns out, there are several technical aspects and a couple of constraints that we had to consider.
 
