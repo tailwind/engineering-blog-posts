@@ -99,7 +99,7 @@ const test => {
     test.assert(r, **null**);
 };
 ```
-**Case 3— User’s caret is not focused on a hashtag:**
+**Case 3 — User’s caret is not focused on a hashtag:**
 ```js
 const test => {
     // Arrange
