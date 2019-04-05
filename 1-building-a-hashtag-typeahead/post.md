@@ -74,7 +74,7 @@ With these arguments in mind and this desired output (either a string that is th
 
 **Case 1 — User is creating or editing a hashtag:**
 ```js
-test(t => {
+const test => {
     // Arrange
     const content = 'Hello #worl';
     const key = 'l';
@@ -85,11 +85,11 @@ test(t => {
 
     // Assert
     test.assert(r, `**#worl**`);
-});
+};
 ```
 **Case 2 — User’s caret is inside of a hashtag but the user is not editing it:**
 ```js
-test(test => {
+const test => {
     // Arrange
     const content = 'Hello #world';
     const key = 'ArrowLeft';
@@ -100,11 +100,11 @@ test(test => {
 
     // Assert
     test.assert(r, **null**);
-});
+};
 ```
 **Case 3— User’s caret is not focused on a hashtag:**
 ```js
-test(test => {
+const test => {
     // Arrange
     const content = '#Hello worl';
     const key = 'l';
@@ -115,7 +115,7 @@ test(test => {
 
     // Assert
     test.assert(r, **null**);
-});
+};
 ```
 Now that we know what results getActiveHashtag should return, let’s look at the implementation:
 ```js
