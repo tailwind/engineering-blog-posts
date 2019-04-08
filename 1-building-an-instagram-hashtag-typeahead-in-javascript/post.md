@@ -25,7 +25,7 @@ Sounds pretty straightforward, right? Turns out, there are several technical cha
 
 Let’s walk through the main challenges of building and rendering a typeahead.
 
-## **How to detect whether a hashtag is being created/edited**
+## How to detect whether a hashtag is being created/edited
 
 When a user is in the process of editing an Instagram post caption, one of several different things can be true:
 
