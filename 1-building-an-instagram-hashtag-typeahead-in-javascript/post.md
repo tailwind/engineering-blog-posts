@@ -45,7 +45,7 @@ In order to determine whether the typeahead should be shown, we need to get the 
 
 1. A `keydown` event handler that will fire every time the user presses a key (or a key combination such as `shift + a`)
 
-2. A function called `getActiveHashtag` that takes the following arguments:
+1. A function called `getActiveHashtag` that takes the following arguments:
 `content` — The content of the post caption that the user is editing. E.g. `Hello #world!`
 
 `key` — The key that the user pressed to trigger this keydown event. We retrieve this from the event object. E.g. if the user presses thea key, then event.key would be a. There’s more information available as part of the event object that can determine whether a key combination was pressed (such as `shift + A`), but in our case, `event.key` is all we care about.
@@ -54,7 +54,7 @@ In order to determine whether the typeahead should be shown, we need to get the 
 
 The `getActiveHashtag` function will either return the hashtag the user is editing (e.g. `#worl`), or `null` if no hashtag is actively being edited by the user.
 
-With these arguments in mind and this desired output (either a string that is the hashtag, or `null`), let’s build some pseudocode test cases that we can use to determine whether or not a user is editing the post caption! You should be able to do this with any common testing suite. At Tailwind, we like to do Test-Driven Development, using [tape](https://www.npmjs.com/package/tape), to reduce bugs and ensure that we’ve planned our implementation correctly before we write the actual code.
+With these arguments in mind and this desired output (either a string that is the hashtag, or `null`), let’s build some pseudocode test cases that we can use to determine whether or not a user is editing the post caption! You should be able to do this with any common testing suite. At Tailwind, we do Test-Driven Development, using [tape](https://www.npmjs.com/package/tape), to reduce bugs and ensure that we’ve planned our implementation correctly before we write the actual code.
 
 The event handler is pretty straightforward. It will call the `getActiveHashtag` method and return the resulting hashtag that it finds:
 ```js
@@ -81,7 +81,7 @@ const test => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    test.assert(r, `**#worl**`);
+    test.assert(r, `#worl`);
 };
 ```
 **Case 2 — User’s caret is inside of a hashtag but the user is not editing it:**
@@ -96,7 +96,7 @@ const test => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    test.assert(r, **null**);
+    test.assert(r, null);
 };
 ```
 **Case 3 — User’s caret is not focused on a hashtag:**
@@ -111,7 +111,7 @@ const test => {
     const r = getActiveHashtag(content, key, caretIndex);
 
     // Assert
-    test.assert(r, **null**);
+    test.assert(r, null);
 };
 ```
 Now that we know what results `getActiveHashtag` should return, let’s look at the implementation:
