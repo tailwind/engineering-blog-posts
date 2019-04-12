@@ -37,7 +37,7 @@ When a user is in the process of editing an Instagram post caption, one of sever
 
 In which cases would we want to display a typeahead?
 
-As it turns out, we would like to display the typeahead for case #1, but not cases #2 and #3. Typeaheads are powerful components, but they should be used only in cases where you *know* they are helpful to your user, which is why we only want to show our Typeahead when the user is typing a hashtag.
+As it turns out, we would like to display the typeahead for case #1, but not cases #2 and #3. Typeaheads are powerful components, but they should be used only in cases where you *know* they are helpful to your user, which is why we only want to show our typeahead when the user is typing a hashtag.
 
 ## To render the typeahead or not to render — That is the question
 
