@@ -175,7 +175,7 @@ const extractActiveWordOrHashtag = (content, caretIndex) => {
 
 Thanks to our keydown handler and `getActiveHashtag`, the logic for whether or not to render the typeahead is in place. In our keydown handler, we return the result of `getActiveHashtag`. If this result isn’t `null`, we know that we need to render the typeahead; so we can pass `activeHashtag` as a prop to our `HashtagTypeahead` component and use it it in the render method like so:
 ```js
-class HashtagTypeahead extends class {
+class HashtagTypeahead extends Component {
 
     ...
 
