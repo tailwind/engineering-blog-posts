@@ -71,7 +71,7 @@ We named our parser function `getActiveHashtag` and we wrote it to accept the fo
 
 **Case 1 — User is creating or editing a hashtag:**
 ```js
-const test => {
+const test = () => {
     // Arrange
     const content = 'Hello #worl';
     const key = 'l';
