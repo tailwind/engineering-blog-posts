@@ -199,4 +199,4 @@ class HashtagTypeahead extends Component {
 ```
 I abstracted away some of the React implementation details, because how you do this part depends on what typeahead library you want to use. At Tailwind, we use React extensively and have some component that do typeaheads for us already. If you’re looking for a good off-the-shelf typeahead components, check out [React Bootstrap Typeahead](https://www.npmjs.com/package/react-bootstrap-typeahead) or [React Autosuggest](https://react-autosuggest.js.org/). These might spare you the time and energy of building your own typeahead.
 
-This is my first project since starting at [Tailwind](undefined) and I had a ton of fun working on it. If you’re interested in solving interesting frontend and backend problems, [we’re hiring](https://www.tailwindapp.com/careers)!
+This is my first project since starting at Tailwind and I had a ton of fun working on it. If you’re interested in solving interesting frontend and backend problems, [we’re hiring](https://www.tailwindapp.com/careers)!
