@@ -29,11 +29,11 @@ Let’s walk through the main challenges of building and rendering a typeahead.
 
 When a user is in the process of editing an Instagram post caption, one of several different things can be true:
 
-1. The user might be typing a new hashtag or editing an existing one
+1\. The user might be typing a new hashtag or editing an existing one
 
-1. The user‘s caret might be focused on a hashtag, but the user might not actually be editing the hashtag at the moment
+2\. The user may be focused on a hashtag, but not actually editing the hashtag at the moment
 
-1. The user could be editing the post caption but not typing a hashtag
+3\. The user could be editing the post caption but not typing a hashtag
 
 In which cases would we want to display a typeahead?
 
@@ -86,7 +86,7 @@ const test = () => {
 ```
 **Case 2 — User’s caret is inside of a hashtag but the user is not editing it:**
 ```js
-const test => {
+const test = () => {
     // Arrange
     const content = 'Hello #world';
     const key = 'ArrowLeft';
@@ -101,7 +101,7 @@ const test => {
 ```
 **Case 3 — User’s caret is not focused on a hashtag:**
 ```js
-const test => {
+const test = () => {
     // Arrange
     const content = '#Hello worl';
     const key = 'l';
