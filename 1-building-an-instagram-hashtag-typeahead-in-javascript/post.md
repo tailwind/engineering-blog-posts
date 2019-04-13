@@ -46,11 +46,12 @@ In order to determine whether the typeahead should be shown, we need to get the 
 1. A `keydown` event handler that will fire every time the user presses a key (or a key combination such as `shift + a`)
 
 1. A function called `getActiveHashtag` that takes the following arguments:
-`content` — The content of the post caption that the user is editing. E.g. `Hello #world!`
 
-`key` — The key that the user pressed to trigger this keydown event. We retrieve this from the event object. E.g. if the user presses thea key, then event.key would be a. There’s more information available as part of the event object that can determine whether a key combination was pressed (such as `shift + A`), but in our case, `event.key` is all we care about.
+- `content` — The content of the post caption that the user is editing. E.g. `Hello #world!`
 
-`caretIndex` — In order to determine what part of the post caption the user is editing, we need to know where the caret is. so that we know exactly what part of the post caption the user is editing. E.g. if the user’s caret is here: `#hello worl|` , then the caret index would be `11`. We get this information from `event.target.selectionStart`.
+- `key` — The key that the user pressed to trigger this keydown event. We retrieve this from the event object. E.g. if the user presses thea key, then event.key would be a. There’s more information available as part of the event object that can determine whether a key combination was pressed (such as `shift + A`), but in our case, `event.key` is all we care about.
+
+- `caretIndex` — In order to determine what part of the post caption the user is editing, we need to know where the caret is. so that we know exactly what part of the post caption the user is editing. E.g. if the user’s caret is here: `#hello worl|` , then the caret index would be `11`. We get this information from `event.target.selectionStart`.
 
 The `getActiveHashtag` function will either return the hashtag the user is editing (e.g. `#worl`), or `null` if no hashtag is actively being edited by the user.
 
@@ -67,7 +68,6 @@ onKeyPress = event => {
     return getActiveHashtag(content, key, caretIndex)
 }
 ```
-We named our parser function `getActiveHashtag` and we wrote it to accept the following arguments:
 
 **Case 1 — User is creating or editing a hashtag:**
 ```js
