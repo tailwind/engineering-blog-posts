@@ -49,7 +49,7 @@ What we need is something that will allow us to listen for *any* changes to the 
 
 ### Enter the `MutationObserver`
 
-To see how a `MutationObserver` can let us watch for changes to a post's caption, we'll be using a jsfiddle which you can find [here](https://jsfiddle.net/Ly03mbs1/5/).
+To see how a `MutationObserver` can let us watch for changes to a post's caption, we'll be using a jsfiddle example which you can find [here](https://jsfiddle.net/Ly03mbs1/5/).
 
 ![jsfiddle][jsfiddle]
 
