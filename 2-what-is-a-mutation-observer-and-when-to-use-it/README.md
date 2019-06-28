@@ -94,7 +94,7 @@ A user can add suggested hashtags by clicking the buttons provided. In productio
 ```
 ![mock-suggested-hashtags][mock-suggested-hashtags]
 
-Notice the `addTextToDiv(...)` handlers? That function is responsible for adding a hashtag to the post's caption when the user clicks on the hashtag button. It looks like this:
+Notice the `addTextToDiv(...)` handlers? That function is responsible for adding a hashtag to the post's caption when the user clicks on a hashtag button. It looks like this:
 
 ```js
 // Add text to the contenteditable div
