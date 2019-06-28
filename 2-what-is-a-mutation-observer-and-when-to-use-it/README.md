@@ -60,12 +60,13 @@ Try playing with the link above. Create a caption, insert some hashtags using th
 ### Diving Into the Code
 
 Here's how the [the code](https://jsfiddle.net/Ly03mbs1/5/) works at a high-level:
-1. Our post caption is a contenteditable div where the user creates a caption by typing and/or selecting hashtags to insert.
+1. Our post caption is a `contenteditable` div where the user creates a caption by typing and/or selecting hashtags to insert.
 2. Any time the post caption changes, the character count below the caption is updated.
 
 Now, let's see how we're using a `MutationObserver` to watch for changes.
 
 **The editable caption**
+
 We use a `contenteditable` div to allow users to edit the caption. Here's how that looks in the DOM:
 ```html
 <div class="post-caption" contenteditable="true" placeholder="Enter your caption here..."></div>
@@ -73,6 +74,7 @@ We use a `contenteditable` div to allow users to edit the caption. Here's how th
 ![editable-caption][editable-caption]
 
 **The caption character count**
+
 We'll use a simple span to show the character count for the caption:
 ```html
 <span>Character count: </span><span id="character-count">0</span>
@@ -81,6 +83,7 @@ We'll use a simple span to show the character count for the caption:
 ![char-count-span][char-count-span]
 
 **The suggested hashtags**
+
 A user can add suggested hashtags by clicking the buttons provided. In production, Tailwind crunches a bunch of data to tell users about the best hashtags to add to a post's caption, but for this example we're just using simple static buttons that look like this:
 ```html
 <input type="button" value="#football" onclick="addTextToDiv('#football')" />
