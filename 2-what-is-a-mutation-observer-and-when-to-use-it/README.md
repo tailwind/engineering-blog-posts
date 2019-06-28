@@ -128,7 +128,7 @@ function updateCharacterCount() {
   charCountElement.innerHTML = postCaptionElement.innerText.length;
 }
 ```
-Remember the `<span id="character-count">` defined above? The function above directly changes that element by looking at the post caption, getting the length of its content (IE how many characters are in the caption), and setting the `#character-count` element with the new number of characters.
+Remember the `<span id="character-count">` defined above? The function above directly changes that element by looking at the post caption, getting the length of its content (I.E. how many characters are in the caption), and setting the `#character-count` element with the new number of characters.
 
 Up till now, we've defined the `MutationObserver` and what it needs to do when the post caption changes. The last remaining step is to attach the `observer` variable created above to an actual element in the DOM:
 
@@ -146,9 +146,11 @@ const postCaptionElement = document.querySelector('.post-caption');
 observer.observe(postCaptionElement, config);
 ```
 
-The `observer` that we created earlier has a method called `observe`, that accepts two arguments:
-1. The element or element to observe (in this case, the `postCaptionElement`)
-2. A `config` object, which tells the `MutationObserver` what kinds of changes to watch for. There are bunch of options, which you can learn more about [here](https://javascript.info/mutation-observer). Breaking down the ones we use:
+The `observer` that we created earlier has a method called `observe`, which accepts two arguments:
+1. The element to observe (in this case, the `<div class="post-caption" contenteditable="true"...>` element)
+2. A `config` object, which tells the `MutationObserver` what kinds of changes to watch for. There are bunch of options, which you can learn more about [here](https://javascript.info/mutation-observer).
+
+Here are the `config` options we use and what they mean:
 
 ```js
 const config = {
@@ -161,7 +163,7 @@ const config = {
 };
 ```
 
-As mentioned, there are other changes you might want to watch for, depending on our use-case. For the purposes of this example, only the content of the post caption (its text content and any children/descendants) are what we care about.
+As mentioned, there are other changes you might want to watch for, depending on your use-case. For the purposes of this example, we only care about the content of the post caption (I.E. its text content and any children/descendants).
 
 ##### Tailwind is Hiring!
 
