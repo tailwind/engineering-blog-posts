@@ -63,7 +63,7 @@ Here's how the [the code](https://jsfiddle.net/Ly03mbs1/5/) works at a high-leve
 1. Our post caption is a `contenteditable` div where the user creates a caption by typing and/or selecting hashtags to insert.
 2. Any time the post caption changes, the character count below the caption is updated.
 
-Now, let's see how we're using a `MutationObserver` to watch for changes.
+Now, let's break the code down piece by piece to see how we're using a `MutationObserver` to update the character count.
 
 **The editable caption**
 
