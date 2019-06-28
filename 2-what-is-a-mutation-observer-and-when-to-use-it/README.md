@@ -57,7 +57,7 @@ Try playing with the link above. Create a caption, insert some hashtags using th
 
 ![jsfiddle-gif][jsfiddle-gif]
 
-#### Diving Into the Code
+### Diving Into the Code
 
 Here's how the [the code](https://jsfiddle.net/Ly03mbs1/5/) works at a high-level:
 1. Our post caption is a contenteditable div where the user creates a caption by typing and/or selecting hashtags to insert.
