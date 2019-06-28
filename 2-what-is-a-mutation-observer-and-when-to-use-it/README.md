@@ -79,8 +79,10 @@ We'll use a simple span to show the character count for the caption:
 ```html
 <span>Character count: </span><span id="character-count">0</span>
 ```
-(it starts at `0` because the caption is empty before the user starting adding content)
 ![char-count-span][char-count-span]
+
+(it starts at `0` because the caption is empty before the user starting adding content)
+
 
 **The suggested hashtags**
 
