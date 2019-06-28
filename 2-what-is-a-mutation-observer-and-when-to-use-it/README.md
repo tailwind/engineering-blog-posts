@@ -1,8 +1,8 @@
 # What is a Mutation Observer and when should you use it?
 
-The `MutationObserver` is a powerful but lesser-known concept that is supported by all major browsers.
+The `MutationObserver` is a powerful but lesser-known concept that is supported by all major browsers. It allows you to watch for changes in the DOM.
 
-It allows you to watch for changes in the DOM. You can see:
+You can see:
 1. When an element is inserted or remove
 2. When an element is modified (both its attributes and content)
 3. When an element's child/children are modified
