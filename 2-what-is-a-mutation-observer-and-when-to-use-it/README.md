@@ -2,8 +2,8 @@
 
 The `MutationObserver` is a powerful but lesser-known concept that is supported by all major browsers. It allows you to watch for changes in the DOM.
 
-You can see:
-1. When an element is inserted or remove
+With it, you can observe:
+1. When an element is inserted or removed
 2. When an element is modified (both its attributes and content)
 3. When an element's child/children are modified
 
@@ -17,7 +17,7 @@ For context, our members use Tailwind to schedule their Instagram posts. They of
 
 ![tailwind-post-example][luck]
 
-Our members can edit post captions directly, as well as choose hashtags from the "Suggested Hashtags" section below the post.
+Our members can edit their post captions directly, as well as select hashtags from the "Suggested Hashtags" section below the post.
 
 Let's imagine that we want to add a character count to the post caption:
 
