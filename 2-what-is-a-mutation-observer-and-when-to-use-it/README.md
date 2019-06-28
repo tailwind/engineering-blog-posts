@@ -1,5 +1,4 @@
 # What is a Mutation Observer and when should you use it?
-## What is a `MutationObserver`
 
 The `MutationObserver` is a powerful but lesser-known concept that is supported by all major browsers.
 
