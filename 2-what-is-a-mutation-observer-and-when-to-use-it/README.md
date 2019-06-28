@@ -49,7 +49,7 @@ What we need is something that will allow us to listen for *any* changes to the 
 
 ### Enter the `MutationObserver`
 
-To see how a `MutationObserver` can let us watch for changes to a post's caption, we'll be using a jsfiddle which you can find [here](https://jsfiddle.net/yr4v5psc/8/).
+To see how a `MutationObserver` can let us watch for changes to a post's caption, we'll be using a jsfiddle which you can find [here](https://jsfiddle.net/Ly03mbs1/5/).
 
 ![jsfiddle][jsfiddle]
 
@@ -59,7 +59,7 @@ Try playing with the link above. Create a caption, insert some hashtags using th
 
 #### Diving Into the Code
 
-Here's how the [the code](https://jsfiddle.net/yr4v5psc/8/) works at a high-level:
+Here's how the [the code](https://jsfiddle.net/Ly03mbs1/5/) works at a high-level:
 1. Our post caption is a contenteditable div where the user creates a caption by typing and/or selecting hashtags to insert.
 2. Any time the post caption changes, the character count below the caption is updated.
 
