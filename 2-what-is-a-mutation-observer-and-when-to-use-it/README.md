@@ -109,10 +109,11 @@ function addTextToDiv(hashtag) {
 
 It's a straightforward function that takes the post caption element and append the hashtag to the end of the caption (after whatever text the user has already entered).
 
-*Now, the fun part!*
+**Now, the fun part!**
+
 Let's look at the `MutationObserver` and see how it listens for changes.
 
-The `MutationObserver` is defined here:
+The `MutationObserver` is defined like so:
 ```js
 // Create a mutation observer instance
 const observer = new MutationObserver(function(mutations) {
@@ -120,16 +121,16 @@ const observer = new MutationObserver(function(mutations) {
   mutations.forEach(updateCharacterCount);
 });
 ```
-This `MutationObserver` is defined to listen for changes, and for each change, call the `updateCharacterCount` function, which looks like so:
+This instnace of the `MutationObserver` is defined to listen for changes, and for each change, call the `updateCharacterCount` function, which looks this:
 ```js
 const charCountElement = document.querySelector('#character-count');
 function updateCharacterCount() {
   charCountElement.innerHTML = postCaptionElement.innerText.length;
 }
 ```
-Remember the `<span id="character-count">` defined above? The function above directly changes that element by looking at the post caption, seeing the length of its content (IE how many characters are in the caption), and setting the `#character-count` element with the new number of characters.
+Remember the `<span id="character-count">` defined above? The function above directly changes that element by looking at the post caption, getting the length of its content (IE how many characters are in the caption), and setting the `#character-count` element with the new number of characters.
 
-Up till now, we've defined the `MutationObserver` and what it needs to do when the post caption changes. The last remaining step is to attach the `const observer` created above to an actual element in the DOM:
+Up till now, we've defined the `MutationObserver` and what it needs to do when the post caption changes. The last remaining step is to attach the `observer` variable created above to an actual element in the DOM:
 
 ```js
 // Define the configuration for the observer
