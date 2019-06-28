@@ -27,7 +27,7 @@ If the post caption was a simple textbox where users typed the caption, we could
 ```js
 /**
  * When the user edits the caption, update the
- * character count box with the new caption length.
+ * character count element with the new caption length.
  */
 function onCaptionChange (event) {
     const newCaptionLength = event.target.value.length;
