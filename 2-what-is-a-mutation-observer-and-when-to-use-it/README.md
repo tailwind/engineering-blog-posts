@@ -53,7 +53,7 @@ To see how a `MutationObserver` can let us watch for changes to a post's caption
 
 ![jsfiddle][jsfiddle]
 
-Try playing with the link above. Create a caption, insert some hashtags using the buttons on the page, and watch the Character count change.
+Try playing with the link above. Create a caption, insert some hashtags using the buttons on the page, and watch the Character count change like so:
 
 ![jsfiddle-gif][jsfiddle-gif]
 
