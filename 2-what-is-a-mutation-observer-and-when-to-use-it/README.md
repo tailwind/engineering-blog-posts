@@ -45,7 +45,7 @@ If a hashtag is inserted into the post caption like so:
 
 ...then the `onCaptionChange` handler defined above won't be triggered, because the user isn't editing the caption directly. In general, `onchange` handlers are not triggered when an element is programmatically changed, but rather when the user interacts with the element. When a Tailwind member selects a hashtag, we programmatically insert it into the post caption, so the `onCaptionChange` has no opportunity to fire.
 
-What we need is something that will allow us to listen for *any* changes to the post caption, regardless of whether those changes come from the user typing a caption or selecting a hashtag.
+What we need is something that will allow us to listen for *any* changes to the post caption, regardless of whether those changes come from the user typing in the caption or selecting a hashtag.
 
 ### Enter the `MutationObserver`
 
