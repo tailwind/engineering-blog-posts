@@ -130,7 +130,7 @@ function updateCharacterCount() {
 ```
 Remember the `<span id="character-count">` defined above? The function above directly changes that element by looking at the post caption, getting the length of its content (I.E. how many characters are in the caption), and setting the `#character-count` element with the new number of characters.
 
-Up till now, we've defined the `MutationObserver` and what it needs to do when the post caption changes. The last remaining step is to attach the `observer` variable created above to an actual element in the DOM:
+Up to now, we've defined the `MutationObserver` and what it needs to do when the post caption changes. The last remaining step is to attach the `observer` variable created above to an actual element in the DOM:
 
 ```js
 // Define the configuration for the observer
