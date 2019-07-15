@@ -121,7 +121,7 @@ const observer = new MutationObserver(function(mutations) {
   mutations.forEach(updateCharacterCount);
 });
 ```
-This instnace of the `MutationObserver` is defined to listen for changes, and for each change, call the `updateCharacterCount` function, which looks this:
+This instance of the `MutationObserver` is defined to listen for changes, and for each change, call the `updateCharacterCount` function, which looks this:
 ```js
 const charCountElement = document.querySelector('#character-count');
 function updateCharacterCount() {
