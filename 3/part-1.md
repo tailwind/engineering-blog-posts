@@ -4,11 +4,11 @@
 
 At Tailwind, we're quick to adopt new technologies that allow us to ship faster, safer, and cleaner code. While the company was founded more than six years ago, our tech stack looks very different today as compared to the early days.
 
-What was once a jQuery app is now mostly built in React. In fact, Tailwind adopted React so early (2015) that we initially used [`hyperx`](https://github.com/choojs/hyperx) to do templating, because [`jsx`](https://reactjs.org/docs/introducing-jsx.html) had not yet become the de facto templating solution for React.
+Where new features were once made in jQuery, they're now built using React. In fact, Tailwind adopted React so early (2015) that we initially used [`hyperx`](https://github.com/choojs/hyperx) to do templating, because [`jsx`](https://reactjs.org/docs/introducing-jsx.html) had not yet become the de facto templating solution for React.
 
 Our adoption of React allowed us to move much faster and build far more performant components than with jQuery. Overall, the adoption was a huge win. However, because React was a new technology at the time, we developed some code patterns that differ from what is commonly seen in React apps built today; particularly around state management / Redux. This pattern isn't wrong per se, but a couple of months ago, we considered whether or not it was a good idea to continue using it.
 
-In investigating our React + Redux architecture and comparing it to the way that most React + Redux apps are built, I found that we're missing out on some of the benefits of doing React + Redux "by the book." In this post, you'll see the differences between our React + Redux today and how it could be structured, if we were using the popular state management patterns available today.
+In investigating our React + Redux architecture and comparing it to the way that most React + Redux apps are built, I found that we're missing out on some of the benefits of doing React + Redux "by the book." In this post, you'll see the differences between Tailwind's React + Redux today and how it could be structured, if we were using the popular state management patterns available today.
 
 This is the first post in a series of three about the process of adopting a new React + Redux approach in an existing codebase. You'll find a link to part two at the end of this post.
 
@@ -30,9 +30,9 @@ function initializeState (initialState) {
 }
 ```
 
-In otherwords, one top-level object that contains all the various pieces of initial `state`. I simplified the example above, but in our actual codebase there are +40 top level state keys, most of which contain several levels of subkeys. The upshot is that our `state` initializer file is >1,000 lines of code!
+One top-level object that contains all the various pieces of initial `state`. I simplified the example above, but in our actual codebase there are +40 top level state keys, most of which contain several levels of subkeys. The upshot is that our `state` initializer file is >1,000 lines of code!
 
-Constrast this with the common Redux `state` initialization pattern:
+Contrast this with the common Redux `state` initialization pattern:
 ```js
 const initialProfilesState = {
     profileData: {
@@ -61,7 +61,7 @@ const rootReducer = combineReducers({
 })
 ```
 
-As you can see, in the example above we make each reducer responsible for specifying its own initial `state`, and we combine reducers together to form our global store. This provides a few niceties versus our current implementation:
+As you can see, in the examples above we make each reducer responsible for specifying its own initial `state`, and we combine reducers together to form our global store. This provides a few niceties versus our current implementation:
 1. Initial `state` is more modular, rather than being defined in one large object.
 2. Each reducer defines its own section of `state`, and more importantly, only has access to that section. The `postsReducer`, for example, doesn't have access to mutate `state.profiles`. We'll discuss why this matters in the next section.
 
@@ -87,7 +87,7 @@ Commonly in React + Redux, you would see the same behavior split up into two fun
 export const profilesReducer(state = initialProfilesState, action) {
     switch (action.type) {
         case 'SET_PROFILE_DATA':
-            state[action.data.profileId] = action.data;
+            state[action.profileId] = action.data;
             return state;
         default:
             return state
@@ -108,7 +108,7 @@ export const getProfileData = params => {
 ```
 
 The Redux pattern here provides some advantages over the Tailwind pattern:
-1. Notice how the original `getProfileReducer` reducer has access to the full `state` object. In our example it's only modifying `state.profiles`, but it could make changes to any other area of Redux `state`. As we touched on in the previous section, the typical React + Redux pattern only allows reducers to change a small portion of `state` (in this example, `state.profiles`). This is ideal, because it's much easier to see how a given area of `state` will change when there's just one reducer responsible it.
+1. Notice how the original `getProfileReducer` reducer has access to the full `state` object. In our example it's only modifying `state.profiles`, but it could make changes to any other area of Redux `state`. As we touched on in the previous section, the typical React + Redux pattern only allows reducers to change a small portion of `state` (in this example, `state.profiles`). This is the ideal encapsulation for a reducer, because it's much easier to see how a given area of state will change when there's just one reducer responsible for it. In otherwords, reducers are much easier to audit.
 2. In the common React + Redux setup, reducers are simple, predictable, static functions. They can be thoroughly tested without having to think about API calls, which speeds up the development workflow.
 
 ## Tailwind Components vs. Common React + Redux Components
